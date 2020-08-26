@@ -5,7 +5,7 @@ use std::os::raw::{c_int};
 use super::super::bindings::{ws2811_init, ws2811_t, ws2811_channel_t};
 use super::super::util::Result;
 
-use super::controller::Controller;
+use super::main::Controller;
 
 /// A struct to assist in the process of initializing
 /// a Controller instance.  One is pretty much required to use

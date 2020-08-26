@@ -26,14 +26,14 @@ impl Controller {
     /// be batched.
     pub fn render(&mut self) -> Result<()> {
         unsafe {
-            return ws2811_render(&mut self.c_struct).into();
+            ws2811_render(&mut self.c_struct).into()
         }
     }
 
     /// Wait for a render to be completed.
     pub fn wait(&mut self) -> Result<()> {
         unsafe {
-            return ws2811_wait(&mut self.c_struct).into();
+            ws2811_wait(&mut self.c_struct).into()
         }
     }
 
@@ -43,7 +43,7 @@ impl Controller {
     /// `active_channels(&self)` seemed overly verbose.
     pub fn channels(&self) -> Vec<usize> {
         (0..self.c_struct.channel.len())
-            .filter(|x: _| self.c_struct.channel[x.clone()].count > 0)
+            .filter(|x: _| self.c_struct.channel[*x].count > 0)
             .collect::<Vec<_>>()
     }
 
