@@ -61,7 +61,7 @@ impl error::Error for WS2811Error {
         }
     }
     fn cause(&self) -> Option<&dyn error::Error> {
-        return None;
+        None
     }
 }
 

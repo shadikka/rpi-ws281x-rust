@@ -70,6 +70,12 @@ impl ChannelBuilder {
         // ws2811_init() in the controller builder, so clone
         // here so that this builder can have .build() called
         // multiple times.
-        self.0.clone()
+        self.0
+    }
+}
+
+impl Default for ChannelBuilder {
+    fn default() -> Self {
+        Self::new()
     }
 }

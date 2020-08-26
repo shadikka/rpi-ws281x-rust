@@ -81,14 +81,20 @@ impl ControllerBuilder {
         // all of the pointers will be initialized as a part of
         // ws2811_init(), so clone here so that this builder
         // can have .build() called multiple times.
-        let mut c_struct = self.0.clone();
+        let mut c_struct = self.0;
         unsafe {
             let res: Result<()> = ws2811_init(&mut c_struct).into();
             match res {
                 Ok(_) => {}
                 Err(e) => return Err(e),
             }
-            return Ok(Controller::new(c_struct));
+            Ok(Controller::new(c_struct))
         }
+    }
+}
+
+impl Default for ControllerBuilder {
+    fn default() -> Self {
+        Self::new()
     }
 }
