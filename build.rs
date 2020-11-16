@@ -30,6 +30,7 @@ fn main() {
         // create a static lib to make cross-compiling
         // and uploading easier.
         .shared_flag(false)
+        .flag("-std=gnu11")
         .compile("libws2811.a");
 
     // link to the created static lib
